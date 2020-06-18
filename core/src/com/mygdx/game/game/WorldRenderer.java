@@ -19,9 +19,11 @@ public class WorldRenderer extends WorldController {
     public Group controlGroup;
     Player player;
     InputScreenPleaseWork inputScreenPleaseWork;
+    Explosion exp;
 
     public WorldRenderer(WorldController wc)
     {
+        exp = new Explosion(0,0);
         background = new ScrollingBackground();
         backgroundImg = new BackgroundImage(0);
         this.controller = wc;
@@ -54,6 +56,7 @@ public class WorldRenderer extends WorldController {
      * */
     public void render()
     {
+
         long t1 = System.nanoTime();
         batch.setProjectionMatrix(camera.combined());
         //batch.setProjectionMatrix(camera2.combined);
@@ -79,12 +82,14 @@ public class WorldRenderer extends WorldController {
             go.getCurrentSprite().draw(batch);
         }
         background.updateAndRender(Gdx.graphics.getDeltaTime(), batch);
+        exp.update(Gdx.graphics.getDeltaTime());
         //o el get
         //camera.LookAt(controller.player);
         camera.update();
         _particleEffect.scaleEffect(0.5f);
         _particleEffect.update(Gdx.graphics.getDeltaTime());
         _particleEffect.draw(batch);
+        exp.render(batch);
         batch.end();
         long t2 = System.nanoTime();
         long delt = t2 - t1;

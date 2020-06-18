@@ -23,6 +23,7 @@ public class Camera {
         viewport.apply();
         cam.position.set(target.position.x , height / 2, 0);
         cam.update();
+        speed = 2;
     }
 
     public Matrix4 combined() {
@@ -35,7 +36,7 @@ public class Camera {
 
     public void update()
     {
-        position.x += (target.position.x - cam.position.x) * speed * Gdx.graphics.getDeltaTime();
+        position.x += (position.x - cam.position.x) * speed * Gdx.graphics.getDeltaTime();
         cam.position.set(position.x,_height/2,0);
         cam.update();
         Gdx.app.log("Camara",cam.position.x  +"o");

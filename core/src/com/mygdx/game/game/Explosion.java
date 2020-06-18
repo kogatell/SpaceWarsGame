@@ -14,8 +14,10 @@ public class Explosion extends GameObject{
     public static final int IMAGE_SIZE = 32;
 
     private static Animation anim = null;
+    private Animator _anim;
     float x, y;
     float statetime;
+    private Texture text;
 
     public boolean remove = false;
 
@@ -24,19 +26,19 @@ public class Explosion extends GameObject{
         this.position.x = x - OFFSET;
         this.position.y = y - OFFSET;
         statetime = 0;
+        text = new Texture("explosion.png");
+        _anim = new Animator(new TextureRegion(new TextureRegion(text)), 3, 0.5f, false);
 
-        if (anim == null)
-            anim = new Animation(FRAME_LENGTH, TextureRegion.split(new Texture("explosion.png"), IMAGE_SIZE, IMAGE_SIZE)[0]);
+
     }
 
     public void update (float deltatime) {
-        statetime += deltatime;
-        if (anim.isAnimationFinished(statetime))
-            remove = true;
+        _anim.update(deltatime);
+
     }
 
     public void render (SpriteBatch batch) {
-        batch.draw((Texture) anim.getKeyFrame(statetime), x, y, SIZE, SIZE);
+        batch.draw( _anim.getFrame(), this.x, this.y);
     }
     @Override
     public Collision getCollisionRect () {

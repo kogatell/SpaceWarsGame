@@ -39,6 +39,7 @@ public class GameObject {
     {
         _particleEffect.load(Gdx.files.internal(s), Gdx.files.internal(""));
     }
+
     public float lookAt(Vector2 target) {
 
         float angle = (float) Math.atan2(target.y - this.position.y, target.x - this.position.x);

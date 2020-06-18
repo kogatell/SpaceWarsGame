@@ -190,6 +190,7 @@ public class WorldController {
                {
                    //gameObjects.add(new Explosion(player.position.x, player.position.y));
                    goToDestroy.add(player);
+                   //player.destroyCol(player.getCollisionRect());
                    //player.destroyCol(player.col);
                    canShoot = false;
                    for (GameObject go3 : gameObjectsCopy)

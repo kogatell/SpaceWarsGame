@@ -32,8 +32,8 @@ public class Player extends GameObject{
         if(Gdx.app.getType() == Application.ApplicationType.Desktop)
         {
            Gdx.app.log("Presiono", "la key");
-            Boolean a = Gdx.input.isKeyPressed(Input.Keys.A);;
-            Boolean d = Gdx.input.isKeyPressed(Input.Keys.D);;
+            Boolean a = Gdx.input.isKeyPressed(Input.Keys.A);
+            Boolean d = Gdx.input.isKeyPressed(Input.Keys.D);
             int p = 2;
             if (a)
             {
@@ -48,9 +48,17 @@ public class Player extends GameObject{
                 dir = 0;
             }
         }
-        else if()
+        else if(Gdx.app.getType() == Application.ApplicationType.Android)
+        {
+            dir = Gdx.input.getGyroscopeX();
+        }
+        //else if()
         col.move(this.position.x,this.position.y);
         this.position.x += (this.speed * deltaTime) * dir;
+        if(this.position.x < -Constants.VIEWPORT_WIDTH * 2)
+        {
+            this.position.x = -Constants.VIEWPORT_WIDTH * 2;
+        }
     }
     @Override
     public Collision getCollisionRect () {

@@ -15,7 +15,7 @@ public class BackgroundImage{
     {
         background1 = new Texture(Gdx.files.internal("background.jpg"));
         background2 = new Texture(Gdx.files.internal("background.jpg")); // identical
-        yMax = Constants.VIEWPORT_HEIGHT * 2;
+        yMax = Constants.VIEWPORT_HEIGHT * 4;
         yCoordBg1 = yMax*(-1); yCoordBg2 = 0;
     }
     /*public void Update(float deltaTime)

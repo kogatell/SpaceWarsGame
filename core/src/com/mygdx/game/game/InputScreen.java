@@ -5,14 +5,16 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 
+import java.awt.*;
+
 public class InputScreen implements GestureDetector.GestureListener, EventListener {
     static public Player player;
+    static public MainMenu menu;
     @Override
     public boolean touchDown(float x, float y, int pointer, int button) {
-
-
-        
-
+        if (menu == null) return false;
+        menu.selection.position.x = menu.camera.getInputInGameWorld().x - menu.selection.width/2;;
+        menu.selection.position.y = menu.camera.getInputInGameWorld().y - menu.selection.height/2;;
         return false;
     }
 
