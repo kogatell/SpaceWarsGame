@@ -46,6 +46,11 @@ public class Camera {
         target = targ;
     }
 
+    public void unproject(Vector3 vec)
+    {
+        cam.unproject(vec);
+    }
+
     public void reSize(float w, float h)
     {
 

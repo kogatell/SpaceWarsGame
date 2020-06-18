@@ -1,6 +1,7 @@
 package com.mygdx.game.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -73,7 +74,8 @@ public class WorldRenderer extends WorldController {
             bul.render(batch);
             bul._particleEffect.draw(batch);
             bul._particleEffect.update(Gdx.graphics.getDeltaTime());
-            _particleEffect.scaleEffect(100f);
+            bul._particleEffect.scaleEffect(100f);
+            bul._particleEffect.draw(batch);
         }
         inputScreenPleaseWork = new InputScreenPleaseWork(player.position.x,player.position.y,3,3,player);
         for(GameObject go: controller.gameObjects) {

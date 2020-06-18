@@ -17,6 +17,7 @@ public class MyGdxGame implements ApplicationListener {
 	MainMenu menu;
 	float dt;
 	boolean pause;
+	MenuRenderer menuRenderer;
 	
 	@Override
 	public void create () {
@@ -24,8 +25,9 @@ public class MyGdxGame implements ApplicationListener {
 		GestureDetector gestDet = new GestureDetector(input);
 		Gdx.input.setInputProcessor(gestDet);
 		OnMainMenu = true;
-		menu = new MainMenu();
+		menu = new MainMenu(this);
 		controller = new WorldController();
+		menuRenderer = new MenuRenderer(menu);
 		renderer = new WorldRenderer(controller);
 		pause = false;
 
@@ -50,11 +52,20 @@ public class MyGdxGame implements ApplicationListener {
 			dt = Gdx.graphics.getDeltaTime();
 		}
 		else dt = 0;
+		if(!OnMainMenu)
+		{
+			controller.update(dt);
+			Gdx.gl.glClearColor(0,0,0, 1);
+			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+			renderer.render();
+		}
+		else {
+			menu.update(dt);
+			Gdx.gl.glClearColor(0,0,0, 1);
+			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+			menuRenderer.render();
+		}
 
-		controller.update(dt);
-		Gdx.gl.glClearColor(0,0,0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		renderer.render();
 	}
 
 	@Override
