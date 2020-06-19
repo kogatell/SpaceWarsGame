@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class SimpleEnemy extends GameObject{
 
     public static final int SPEED = 5;
-    public static final int WIDTH = 2;
-    public static final int HEIGHT = 2;
+    public static final int WIDTH = 10;
+    public static final int HEIGHT = 10;
     private static Sprite texture;
     float ang;
 
@@ -25,7 +25,7 @@ public class SimpleEnemy extends GameObject{
         this.position.y = Constants.VIEWPORT_HEIGHT;
         this.col = new Collision(x, y, WIDTH, HEIGHT);
         this.texture = new Sprite(new Texture("Asteroid.png"));
-        this.sprites.add(SpriteHelper.spriteFromTexture("Asteroid.png", 0 , 0));
+        this.sprites.add(SpriteHelper.spriteFromTexture("Asteroid.png", WIDTH/2 , 0));
         this.typeOfGO = 1;
     }
     @Override

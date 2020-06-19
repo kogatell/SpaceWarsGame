@@ -41,14 +41,18 @@ public class GameObject {
     }
 
     public float lookAt(Vector2 target) {
+        float diffX = target.x - this.position.x;
+        float diffY = target.y - this.position.y;
 
-        float angle = (float) Math.atan2(target.y - this.position.y, target.x - this.position.x);
-        angle = (float) (angle * (180 / Math.PI));
+        float angle = (float)Math.atan2(diffY, diffX);
+
+        this.position.x += 0.2 * Math.cos(angle);
+        this.position.y += 0.2 * Math.sin(angle);
+        float rot = (float) Math.atan2(target.y - this.position.y, target.x - this.position.x);
+        rot = (float) (angle * (180 / Math.PI) - 90f);
         _x = MathUtils.cos(angle);
-        setAngle(angle);
-        this.position.x += _x;
+        setAngle(rot);
         return _x;
-
     }
 
     public void setAngle(float ang)

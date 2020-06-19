@@ -30,7 +30,7 @@ public class MainMenu {
         targ.position.y = 0;
         _game = game;
         camera = new Camera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, targ);
-        b1 = new Button("COMENZAR",0,0,600,70);
+        b1 = new Button("COMENZAR",Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth()/2,600,70);
     }
 
     public MainMenu() {

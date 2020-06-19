@@ -10,7 +10,7 @@ public class Explosion extends GameObject{
 
     public static final float FRAME_LENGTH = 0.2f;
     public static final int OFFSET = 8;
-    public static final int SIZE = 64;
+    public static final int SIZE = 12;
     public static final int IMAGE_SIZE = 32;
 
     private static Animation anim = null;
@@ -28,8 +28,6 @@ public class Explosion extends GameObject{
         statetime = 0;
         text = new Texture("explosion.png");
         _anim = new Animator(new TextureRegion(new TextureRegion(text)), 3, 0.5f, false);
-
-
     }
 
     public void update (float deltatime) {

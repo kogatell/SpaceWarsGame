@@ -23,13 +23,14 @@ public class BulletEnemy extends GameObject {
         this.position.x = x;
         this.position.y = y;
         this.width = WIDTH;
-        this.giveParticleEffect("laserEnemy.p");
+        //this.giveParticleEffect("laserEnemy.p");
         this.height = HEIGHT;
         texture = new Sprite(new Texture("mega-laser-1.png"));
         this.col = new Collision(this.position.x, this.position.y, WIDTH, HEIGHT);
         this.sprites.add(SpriteHelper.spriteFromTexture("mega-laser-1.png", 0 , 0));
         this.typeOfGO = 5;
         this._particleEffect.start();
+        this.getCurrentSprite().setRotation(180);
         //sprites.add(SpriteHelper.spriteFromTexture("laser.png", 0 , 0));
 
     }
@@ -40,8 +41,8 @@ public class BulletEnemy extends GameObject {
         if (this.position.y > Gdx.graphics.getHeight())
             remove = true;
         col.move(this.position.x,this.position.y);
-        this._particleEffect.setPosition(this.position.x, this.position.y);
-        this._particleEffect.update(deltaTime);
+        //this._particleEffect.setPosition(this.position.x, this.position.y);
+        //this._particleEffect.update(deltaTime);
     }
     public void render (SpriteBatch batch) {
         texture.setPosition(this.position.x, this.position.y);

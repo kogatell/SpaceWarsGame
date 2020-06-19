@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class ShootingEnemy extends GameObject{
 
     public static final int SPEED = 3;
-    public static final float WIDTH = 2;
-    public static final float HEIGHT = 2;
+    public static final float WIDTH = 6;
+    public static final float HEIGHT = 6;
     private static Sprite texture;
 
 

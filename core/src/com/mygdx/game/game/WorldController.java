@@ -17,7 +17,7 @@ public class WorldController {
     Player player;
     ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
     ScrollingBackground background;
-    int health;
+    public int health;
     boolean dropPowerUp;
     BitmapFont font =new BitmapFont();
     boolean doubleShoot;
@@ -70,7 +70,7 @@ public class WorldController {
         //s.rotate(45.0f * deltaTime);
         if (isShooting() && canShoot && !doubleShoot)
         {
-            gameObjects.add(new Bullet(player.position.x + player.width / 2 -Bullet.WIDTH/2, player.HEIGHT - Bullet.HEIGHT));
+            gameObjects.add(new Bullet(player.position.x + player.width / 2 -Bullet.WIDTH/2, player.position.y + player.HEIGHT - Bullet.HEIGHT));
             //bullets.add(new Bullet(player.position.x));
         }
         if(isShielding())
@@ -159,20 +159,27 @@ public class WorldController {
             }
            for (GameObject go2: gameObjectsCopy)
            {
+
                gameObjects.clone();
+               if(go.position.y < -10)
+               {
+                   goToDestroy.add(go);
+               }
                if(go.getCollisionRect().collidesWith(player.getCollisionRect()) && go.typeOfGO == 1 || go.getCollisionRect().collidesWith(player.getCollisionRect()) && go.typeOfGO == 4 || go.getCollisionRect().collidesWith(player.getCollisionRect()) && go.typeOfGO == 5)
                {
+                    go.getCollisionRect().move(-1000, -1000);
                     goToDestroy.add(go);
                     //gameObjects.removeAll(goToDestroy);
                     health--;
                }
                if(go.getCollisionRect().collidesWith(player.getCollisionRect()) && go.typeOfGO == 1 || go.getCollisionRect().collidesWith(player.getCollisionRect()) && go.typeOfGO == 7 || go.getCollisionRect().collidesWith(player.getCollisionRect()) && go.typeOfGO == 7)
                {
+                   go.getCollisionRect().move(-1000, -1000);
                    goToDestroy.add(go);
                    //gameObjects.removeAll(goToDestroy);
                    health--;
                }
-               if (go.getCollisionRect().collidesWith(go2.getCollisionRect()) && go.typeOfGO == 0 && go2.typeOfGO == 1 || go.getCollisionRect().collidesWith(go2.getCollisionRect()) && go.typeOfGO == 0 && go2.typeOfGO == 4){
+               if (go.getCollisionRect().collidesWith(go2.getCollisionRect()) && go.typeOfGO == 0 && go2.typeOfGO == 1 || go.getCollisionRect().collidesWith(go2.getCollisionRect()) && go.typeOfGO == 0 && go2.typeOfGO == 4 || go.getCollisionRect().collidesWith(go2.getCollisionRect()) && go.typeOfGO == 0 && go2.typeOfGO == 7){
                     x = go.position.x;
                     y = go.position.y;
                     goToDestroy.add(go);
@@ -199,6 +206,7 @@ public class WorldController {
                    }
 
                }
+
                if(go.position.y == - Constants.VIEWPORT_HEIGHT || go.position.y <= -5)
                {
                    goToDestroy.add(go);

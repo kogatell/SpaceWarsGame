@@ -9,8 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 public class ChaseEnemy extends  GameObject{
     public int SPEED = 10;
     public static final float DEFAULT_Y = -1.75f;
-    public static final float WIDTH = 2;
-    public static final float HEIGHT = 2;
+    public static final float WIDTH = 7;
+    public static final float HEIGHT = 7;
     private static Sprite texture;
     private float targetx;
     private Vector2 targ;
@@ -32,15 +32,14 @@ public class ChaseEnemy extends  GameObject{
         float targetX;
 
 
-        this.texture = new Sprite(new Texture("ufo.png"));
-        this.sprites.add(SpriteHelper.spriteFromTexture("ufo.png", 0 , 0));
+        this.texture = new Sprite(new Texture("ChaseSpaceship.png"));
+        this.sprites.add(SpriteHelper.spriteFromTexture("ChaseSpaceship.png", 0 , 0));
         //angle = this.lookAt(target);
         this.typeOfGO = 7;
     }
     public void update (float deltaTime) {
-        this.position.y -= SPEED * deltaTime;
+        //this.position.y -= SPEED * deltaTime;
         //this.position.x += angle;
-
         //this.position.x += this._x * 0.1f;
         //this.position.x -= SPEED * deltaTime  - target.x;
         //double ang = Math.atan2(target.y - position.y, target.x - position.x) * 180f / Math.PI; //Check

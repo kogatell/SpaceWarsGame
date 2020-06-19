@@ -28,13 +28,13 @@ public class InputScreenPleaseWork {
         imgButton1.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                _player.dir = -1;
+                _player.dirX = -1;
                 return super.touchDown(event, x, y, pointer, button);
             }
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                _player.dir = 0;
+                _player.dirX = 0;
                 super.touchUp(event, x, y, pointer, button);
             }
         });
@@ -43,13 +43,13 @@ public class InputScreenPleaseWork {
         imgButton1.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                _player.dir = 1;
+                _player.dirX = 1;
                 return super.touchDown(event, x, y, pointer, button);
             }
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                _player.dir = 0;
+                _player.dirX = 0;
                 super.touchUp(event, x, y, pointer, button);
             }
         });
