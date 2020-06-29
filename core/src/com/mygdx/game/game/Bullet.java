@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Bullet extends GameObject {
 
-    public int SPEED = 50;
+    public int SPEED = 200;
     public static final float DEFAULT_Y = -1.75f;
     public static final float WIDTH = 4;
     public static final float HEIGHT = 4;

@@ -33,7 +33,7 @@ public class ChaseEnemy extends  GameObject{
 
 
         this.texture = new Sprite(new Texture("ChaseSpaceship.png"));
-        this.sprites.add(SpriteHelper.spriteFromTexture("ChaseSpaceship.png", 0 , 0));
+        this.sprites.add(SpriteHelper.spriteFromTexture("ChaseSpaceship.png", 3 , 0));
         //angle = this.lookAt(target);
         this.typeOfGO = 7;
     }

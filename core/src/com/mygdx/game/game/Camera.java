@@ -36,7 +36,7 @@ public class Camera {
 
     public void update()
     {
-        position.x += (position.x - cam.position.x) * speed * Gdx.graphics.getDeltaTime();
+        //position.x += (position.x - cam.position.x) * speed * Gdx.graphics.getDeltaTime();
         cam.position.set(target.position.x,_height/2,0);
         cam.update();
         Gdx.app.log("Camara",cam.position.x  +"o");

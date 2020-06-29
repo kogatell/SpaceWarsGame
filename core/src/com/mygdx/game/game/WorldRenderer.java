@@ -21,11 +21,15 @@ public class WorldRenderer extends WorldController {
     Player player;
     InputScreenPleaseWork inputScreenPleaseWork;
     Explosion exp;
+    SpecialShot specialShot;
+    YouLoose youLoose;
 
     public WorldRenderer(WorldController wc)
     {
         healthIcons = new ArrayList<Health>();
-        exp = new Explosion(0,0);
+        youLoose = new YouLoose(1000, 100);
+        exp = new Explosion(500,5000);
+        //exp.render(batch);
         background = new ScrollingBackground();
         backgroundImg = new BackgroundImage(0);
         this.controller = wc;
@@ -38,7 +42,8 @@ public class WorldRenderer extends WorldController {
         _particleEffect.setPosition(5, 5);
         _particleEffect.flipY();
         _particleEffect.start();
-        for(int i = 0; i<wc.health; i++)
+        specialShot = new SpecialShot(-SpecialShot.WIDTH, 0);
+        for(int i = 0; i< wc.health; i++)
         {
             healthIcons.add(new Health(0 + Health.WIDTH + Health.WIDTH * i, 0));
         }
@@ -47,7 +52,6 @@ public class WorldRenderer extends WorldController {
         batch = new SpriteBatch();
         //cont = new Controller(camera, this);
         background.setSpeedFixed(true);
-
     }
 
     public void init()
@@ -97,8 +101,23 @@ public class WorldRenderer extends WorldController {
             healthIcons.get(i).getCurrentSprite().setSize(healthIcons.get(i).width, healthIcons.get(i).height);
             healthIcons.get(i).getCurrentSprite().draw(batch);
         }
+        if(controller.doubleShoot)
+        {
+            specialShot.getCurrentSprite().setPosition(player.position.x + specialShot.getCurrentSprite().getWidth(), specialShot.position.y);
+            specialShot.getCurrentSprite().setSize(specialShot.width, specialShot.height);
+            specialShot.getCurrentSprite().draw(batch);
+        }
         background.updateAndRender(Gdx.graphics.getDeltaTime(), batch);
-        exp.update(Gdx.graphics.getDeltaTime());
+        if(player.isDead){
+            youLoose.position.x = player.position.x;
+            youLoose.position.y = player.position.y;
+            youLoose.getCurrentSprite().draw(batch);
+            exp.position.x = player.position.x;
+            exp.position.y = player.position.y;
+            exp.render(batch);
+            exp.update(Gdx.graphics.getDeltaTime());
+        }
+
         //o el get
         //camera.LookAt(controller.player);
         camera.update();
